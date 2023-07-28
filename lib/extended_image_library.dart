@@ -8,4 +8,5 @@ export 'src/extended_image_provider.dart';
 export 'src/extended_memory_image_provider.dart';
 export 'src/extended_resize_image_provider.dart';
 export 'src/network/extended_network_image_provider.dart';
+export 'src/network/network_image_io.dart';
 export 'src/platform.dart';

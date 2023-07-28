@@ -27,7 +27,7 @@ abstract class ExtendedNetworkImageProvider
     bool cacheRawData,
     String? imageCacheName,
     Duration? cacheMaxAge,
-  }) = network_image.ExtendedNetworkImageProvider;
+  }) = network_image.ExtendedNetworkImageProviderIO;
 
   /// Time Limit to request image
   Duration? get timeLimit;
@@ -70,5 +70,5 @@ abstract class ExtendedNetworkImageProvider
 
   ///HttpClient for network, it's null on web
   static dynamic get httpClient =>
-      network_image.ExtendedNetworkImageProvider.httpClient;
+      network_image.ExtendedNetworkImageProviderIO.httpClient;
 }

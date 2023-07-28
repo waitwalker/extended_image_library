@@ -11,14 +11,14 @@ import 'package:path_provider/path_provider.dart';
 
 import 'extended_network_image_provider.dart' as image_provider;
 
-class ExtendedNetworkImageProvider
+class ExtendedNetworkImageProviderIO
     extends ImageProvider<image_provider.ExtendedNetworkImageProvider>
     with ExtendedImageProvider<image_provider.ExtendedNetworkImageProvider>
     implements image_provider.ExtendedNetworkImageProvider {
   /// Creates an object that fetches the image at the given URL.
   ///
   /// The arguments must not be null.
-  ExtendedNetworkImageProvider(
+  ExtendedNetworkImageProviderIO(
     this.url, {
     this.scale = 1.0,
     this.headers,
@@ -103,7 +103,7 @@ class ExtendedNetworkImageProvider
 
     return MultiFrameImageStreamCompleter(
       codec: _loadAsync(
-        key as ExtendedNetworkImageProvider,
+        key as ExtendedNetworkImageProviderIO,
         chunkEvents,
         decode,
       ),
@@ -121,13 +121,13 @@ class ExtendedNetworkImageProvider
   }
 
   @override
-  Future<ExtendedNetworkImageProvider> obtainKey(
+  Future<ExtendedNetworkImageProviderIO> obtainKey(
       ImageConfiguration configuration) {
-    return SynchronousFuture<ExtendedNetworkImageProvider>(this);
+    return SynchronousFuture<ExtendedNetworkImageProviderIO>(this);
   }
 
   Future<ui.Codec> _loadAsync(
-    ExtendedNetworkImageProvider key,
+    ExtendedNetworkImageProviderIO key,
     StreamController<ImageChunkEvent> chunkEvents,
     ImageDecoderCallback decode,
   ) async {
@@ -178,7 +178,7 @@ class ExtendedNetworkImageProvider
 
   /// Get the image from cache folder.
   Future<Uint8List?> _loadCache(
-    ExtendedNetworkImageProvider key,
+    ExtendedNetworkImageProviderIO key,
     StreamController<ImageChunkEvent>? chunkEvents,
     String md5Key,
   ) async {
@@ -223,7 +223,7 @@ class ExtendedNetworkImageProvider
 
   /// Get the image from network.
   Future<Uint8List?> _loadNetwork(
-    ExtendedNetworkImageProvider key,
+    ExtendedNetworkImageProviderIO key,
     StreamController<ImageChunkEvent>? chunkEvents,
   ) async {
     try {
@@ -308,7 +308,7 @@ class ExtendedNetworkImageProvider
     if (other.runtimeType != runtimeType) {
       return false;
     }
-    return other is ExtendedNetworkImageProvider &&
+    return other is ExtendedNetworkImageProviderIO &&
         url == other.url &&
         scale == other.scale &&
         cacheRawData == other.cacheRawData &&
